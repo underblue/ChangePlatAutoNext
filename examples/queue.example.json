@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "source": "examples/input_a.3mf",
+      "plate": 1,
+      "copies": 1,
+      "channel_map": {"1": 1}
+    },
+    {
+      "source": "examples/input_b.3mf",
+      "plate": 1,
+      "copies": 2,
+      "channel_map": {"1": 2}
+    }
+  ],
+  "recipe": {
+    "profile": "default-a1",
+    "wait_hotbed_cool": false,
+    "wait_before_next_plate": true,
+    "wait_seconds": 120,
+    "insertion_strategy": "before_finish_sound_block"
+  },
+  "output": "exports/merged.3mf"
+}

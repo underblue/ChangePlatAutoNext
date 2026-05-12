@@ -1,0 +1,45 @@
+[project]
+name = "change-plate-next"
+version = "1.0.0"
+description = "Redesigned automatic plate-change 3MF post-processor for Bambu sliced projects."
+license = "GPL-3.0-only"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+dependencies = [
+  "defusedxml>=0.7",
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Environment :: X11 Applications :: Qt",
+  "Operating System :: OS Independent",
+  "Topic :: Multimedia :: Graphics :: 3D Modeling",
+]
+
+[project.optional-dependencies]
+desktop = ["PyQt6>=6.7"]
+image = ["Pillow>=10.0"]
+test = ["pytest>=8.0"]
+build = ["pyinstaller>=6.10"]
+
+[project.scripts]
+change-plate-next = "change_plate_next.interfaces.cli.main:main"
+change-plate-next-gui = "change_plate_next.interfaces.desktop.app:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"change_plate_next.interfaces.desktop.styles" = ["*.qss"]
+"change_plate_next.interfaces.desktop.assets" = ["*.png"]
+"change_plate_next.resources" = ["*.gcode"]
