@@ -6,6 +6,17 @@ ChangePlatAutoNext is a clean-architecture redesign of ChangePlatAuto, a Bambu s
 
 The tool is designed to import already-sliced Bambu 3MF packages, compose their plate G-code into one output 3MF, remap filament channels, insert automatic plate-change G-code, update package metadata, and optionally hand the result to Bambu Connect.
 
+## One-Command Build
+
+After cloning the project, users can install dependencies and build a local executable for their current operating system:
+
+```bash
+cd ChangePlatAutoNext
+python install.py
+```
+
+The script creates `.venv`, installs runtime/desktop/image/build dependencies, and runs PyInstaller. Build output is written to `dist/`. See `docs/user/install_and_build.md` for platform notes and troubleshooting.
+
 ## Status
 
 This directory now contains a usable 1.0 desktop and CLI application for sliced 3MF inspection, single-output 3MF composition, G-code transformation, merged 3MF export, Bambu Connect handoff, PyQt6/QSS packaging, and automated tests.
@@ -94,18 +105,6 @@ interfaces -> application -> domain
 
 See `docs/software_architecture_design.md` for the full design.
 
-
-## One-Command Build
-
-After cloning the project, users can install dependencies and build a local executable for their current operating system:
-
-```bash
-cd ChangePlatAutoNext
-python install.py
-```
-
-The script creates `.venv`, installs runtime/desktop/image/build dependencies, and runs PyInstaller. Build output is written to `dist/`. See `docs/user/install_and_build.md` for platform notes and troubleshooting.
-
 ## Local Development
 
 ```bash
@@ -128,17 +127,6 @@ Run the CLI:
 ```bash
 python -m change_plate_next.interfaces.cli.main
 ```
-
-## VibeCoding Workflow
-
-This project is structured so an AI coding agent or human pair programmer can work in small, verifiable slices:
-
-1. Read `docs/vibecoding/agent_playbook.md`.
-2. Pick one task from `docs/vibecoding/implementation_backlog.md`.
-3. Implement only the files owned by that task.
-4. Add or update tests listed in the task acceptance criteria.
-5. Run the relevant check command.
-6. Update docs if contracts or behavior changed.
 
 ## Safety Boundary
 
