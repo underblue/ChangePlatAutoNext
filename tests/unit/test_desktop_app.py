@@ -3,20 +3,17 @@ import sys
 from pathlib import Path
 
 import pytest
-
-pytestmark = pytest.mark.skipif(
-    os.environ.get("RUN_QT_GUI_TESTS") != "1",
-    reason="Qt widget tests are opt-in because headless macOS runners can abort inside QApplication.",
-)
-
-os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
-
 from PyQt6.QtWidgets import QApplication, QLabel
 
 from change_plate_next.domain.models import FilamentSignature, FilamentUsage, LocalFilamentId, Plate, PlateAssetRefs, PlateId, QueueEntry
 from change_plate_next.interfaces.desktop.app import MainWindow, StepperSpinBox
 from change_plate_next.interfaces.desktop.i18n import Translator
 from change_plate_next.interfaces.desktop.settings_store import load_settings
+
+pytestmark = pytest.mark.skipif(
+    os.environ.get("RUN_QT_GUI_TESTS") != "1",
+    reason="Qt widget tests are opt-in because headless macOS runners can abort inside QApplication.",
+)
 
 
 def qapp() -> QApplication:
@@ -98,7 +95,7 @@ def test_source_table_binds_copies_to_each_row_and_reorders_queue() -> None:
 
     assert window.sources_table.rowCount() == 3
     assert window.sources_value.text() == "3"
-    assert "份数绑定" in window.sources_hint.text()
+    assert window.sources_hint.text() == "拖动打印项行可调整打印顺序。"
     assert isinstance(window.sources_table.cellWidget(0, 1), QLabel)
     assert window.sources_table.item(0, 0).text() == "#1"
     assert window.sources_table.item(1, 0).text() == "#2"
