@@ -127,17 +127,6 @@ Run the CLI:
 python -m change_plate_next.interfaces.cli.main
 ```
 
-## VibeCoding Workflow
-
-This project is structured so an AI coding agent or human pair programmer can work in small, verifiable slices:
-
-1. Read `docs/vibecoding/agent_playbook.md`.
-2. Pick one task from `docs/vibecoding/implementation_backlog.md`.
-3. Implement only the files owned by that task.
-4. Add or update tests listed in the task acceptance criteria.
-5. Run the relevant check command.
-6. Update docs if contracts or behavior changed.
-
 ## Safety Boundary
 
 G-code can move hardware. The default behavior must remain conservative:
