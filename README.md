@@ -1,5 +1,7 @@
 # ChangePlatAutoNext
 
+Languages: English | [简体中文](README.zh-CN.md)
+
 ChangePlatAutoNext is a clean-architecture redesign of ChangePlatAuto, a Bambu sliced-3MF post-processor for automatic plate-change workflows.
 
 The tool is designed to import already-sliced Bambu 3MF packages, compose their plate G-code into one output 3MF, remap filament channels, insert automatic plate-change G-code, update package metadata, and optionally hand the result to Bambu Connect.
