@@ -3,17 +3,19 @@ import sys
 from pathlib import Path
 
 import pytest
-from PyQt6.QtWidgets import QApplication, QLabel
 
-from change_plate_next.domain.models import FilamentSignature, FilamentUsage, LocalFilamentId, Plate, PlateAssetRefs, PlateId, QueueEntry
-from change_plate_next.interfaces.desktop.app import MainWindow, StepperSpinBox
-from change_plate_next.interfaces.desktop.i18n import Translator
-from change_plate_next.interfaces.desktop.settings_store import load_settings
+if os.environ.get("RUN_QT_GUI_TESTS") != "1":
+    pytest.skip(
+        "Qt widget tests are opt-in because headless runners can lack Qt system libraries.",
+        allow_module_level=True,
+    )
 
-pytestmark = pytest.mark.skipif(
-    os.environ.get("RUN_QT_GUI_TESTS") != "1",
-    reason="Qt widget tests are opt-in because headless macOS runners can abort inside QApplication.",
-)
+from PyQt6.QtWidgets import QApplication, QLabel  # noqa: E402
+
+from change_plate_next.domain.models import FilamentSignature, FilamentUsage, LocalFilamentId, Plate, PlateAssetRefs, PlateId, QueueEntry  # noqa: E402
+from change_plate_next.interfaces.desktop.app import MainWindow, StepperSpinBox  # noqa: E402
+from change_plate_next.interfaces.desktop.i18n import Translator  # noqa: E402
+from change_plate_next.interfaces.desktop.settings_store import load_settings  # noqa: E402
 
 
 def qapp() -> QApplication:
